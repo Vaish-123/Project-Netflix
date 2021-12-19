@@ -1,0 +1,24 @@
+.row{
+    color: white;
+    margin-left: 10px;
+}
+.title{
+    padding-left: 20px;
+}
+.posters{
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 20px;
+}
+.imgLarge{
+    height: 250px;
+    margin-right: 20px;
+}
+.imgSmall{
+    height: 100px;
+    margin-right: 10px;
+}
+.posters::-webkit-scrollbar{
+    display: none;
+}
