@@ -1,24 +1,43 @@
 import React, { useEffect, useState } from 'react'
 import axios from '../../Axios'
-import { API_KEY,imageUrl } from '../../Constants/Constants'
+import { imageUrl, API_KEY } from '../../Constants/Constants'
 import './RowPoster.css'
+import YouTube from 'react-youtube'
+
 function RowPoster(props) {
     const [movies, setMovies] = useState([])
     useEffect(() => {
-        axios.get(`discover/tv?api_key=${API_KEY}&with_networks=213`).then(response => {
+        axios.get(props.url).then(response => {
             setMovies(response.data.results)
         })
     }, [])
+    const [UrlId, setUrlId] = useState()
+    const opts = {
+        height: '390',
+        width: '100%',
+        playerVars: {
+            // https://developers.google.com/youtube/player_parameters
+            autoplay: 1,
+        }
+    }
+    const playMovie = (id) => {
+        axios.get(`/movie/${id}/videos?api_key=${API_KEY}&language=en-US`).then(response => {
+            if (response.data.results.length > 0)
+                setUrlId(response.data.results[0])
+            else
+                console.log('Array empty');
+        })
+    }
     return (
-        <div className='row'>
+        <div className='row' >
             <h1 className='title'>{props.title}</h1>
             <div className="posters">
                 {movies.map((obj) =>
-                        <img src={`${imageUrl+obj.backdrop_path}`} alt="Poster goes here" className={props.small?'imgSmall':'imgLarge'} />
+                    <img onClick={() => playMovie(obj.id)} src={`${imageUrl + obj.backdrop_path}`} alt="Poster goes here" className={props.small ? 'imgSmall' : 'imgLarge'} />
                 )}
-
             </div>
-        </div>
+            {UrlId && <YouTube opts={opts} videoId={UrlId.key} />}
+        </div >
     )
 }
 
