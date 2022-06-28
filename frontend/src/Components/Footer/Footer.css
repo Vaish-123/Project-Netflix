@@ -1,0 +1,45 @@
+.footer {
+    background-color: #222;
+    height: 8px;
+}
+
+.subFooter {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    height: 250px;
+    text-align: left;
+}
+
+.footerMargin {
+    margin-top: 50px;
+    color: #757577;
+}
+
+.frow {
+    margin-left: 100px;
+}
+
+.fm {
+    color: #757577;
+    font-size: 14px;
+    padding-left: 7px;
+}
+
+.fm p {
+    margin: 8px;
+}
+
+.TMDBcopyright, .copyright {
+    font-size: 15px;
+    color: #757577;
+}
+
+.TMDBcopyright {
+    margin-bottom: 60px;
+}
+
+.fm a {
+    color: #757577;
+    text-decoration: none;
+}

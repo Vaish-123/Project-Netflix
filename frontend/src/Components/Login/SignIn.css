@@ -1,0 +1,52 @@
+.logo {
+    position: fixed;
+    margin-left: 25px;
+    margin-top: 30px;
+}
+
+.signIn {
+    height: 800px;
+    background-image: url("https://149695847.v2.pressablecdn.com/wp-content/uploads/2019/05/apps.55787.9007199266246365.687a10a8-4c4a-4a47-8ec5-a95f70d8852d.jpg");
+    display: flex;
+    align-items: center;
+}
+
+.sc {
+    height: 400px;
+    width: 350px;
+    padding: 50px;
+    background-color: rgba(0 0 0 / 83%);
+    transition-property: width, height;
+    transition-duration: 2s;
+    color: aliceblue;
+}
+
+.sc:hover {
+    height: 450px;
+    width: 400px;
+}
+
+.ipBox {
+    background-color: #333;
+    margin: 10px;
+    margin-left: 0;
+    color: aliceblue;
+}
+
+
+.ipBox:focus::placeholder {
+    font-size: small;
+}
+
+.ipBox:focus {
+    background-color: rgb(86, 84, 84);
+    color: aliceblue;
+}
+
+.signInBtn {
+    background-color: red;
+    color: aliceblue;
+    width: 100%;
+    margin: 10px;
+    margin-left: 0;
+}

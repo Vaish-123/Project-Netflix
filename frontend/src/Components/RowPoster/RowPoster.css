@@ -1,0 +1,42 @@
+.rrow {
+    color: white;
+    margin-left: 10px;
+}
+
+.title {
+    padding-left: 20px;
+}
+
+.posters {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+.imgLarge {
+    height: 250px;
+    margin-right: 20px;
+}
+
+.imgSmall {
+    height: 150px;
+    margin-right: 10px;
+}
+
+.imgLarge:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: transform .6s;
+}
+
+.imgSmall:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: transform .6s;
+}
+
+.posters::-webkit-scrollbar {
+    display: none;
+}
