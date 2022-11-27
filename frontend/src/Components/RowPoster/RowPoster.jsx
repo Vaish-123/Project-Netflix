@@ -9,7 +9,7 @@ function RowPoster(props) {
     const [movies, setMovies] = useState([]);
     const [UrlId, setUrlId] = useState();
 
-    setInterval(logout, 10000);
+    setInterval(logout, 50000);
 
     function logout() {
         axios.get('http://localhost:3001/logout').then((res) => {

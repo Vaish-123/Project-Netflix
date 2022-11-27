@@ -1,0 +1,31 @@
+.logo {
+    width: 135px !important;
+}
+
+.signUp {
+    height: 800px;
+    background-image: url("https://149695847.v2.pressablecdn.com/wp-content/uploads/2019/05/apps.55787.9007199266246365.687a10a8-4c4a-4a47-8ec5-a95f70d8852d.jpg");
+    display: flex;
+    align-items: center;
+}
+
+.su {
+    color: #fff;
+    margin: 0 auto;
+    max-width: 950px;
+    padding: 75px 0;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+    font-size: 1.625rem;
+    font-weight: 400;
+
+}
+
+.su .signUpHeader {
+    font-size: 3.125rem;
+    max-width: 640px;
+    margin: auto;
+    text-align: center;
+}
