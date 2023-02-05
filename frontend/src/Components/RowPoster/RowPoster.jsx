@@ -19,7 +19,7 @@ function RowPoster(props) {
 
     useEffect(() => {
         axios.get(props.url).then(response => {
-            setMovies(response.data.results)
+            setMovies(response.data.results);
         })
     }, [])
 
@@ -34,9 +34,9 @@ function RowPoster(props) {
     const playMovie = (id) => {
         axios.get(`/movie/${id}/videos?api_key=${API_KEY}&language=en-US`).then(response => {
             if (response.data.results.length > 0)
-                setUrlId(response.data.results[2])
+                setUrlId(response.data.results[2]);
             else {
-                alert('Video unavailable')
+                alert('Video unavailable');
             }
         })
     }
