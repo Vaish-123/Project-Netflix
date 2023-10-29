@@ -29,3 +29,14 @@
     margin: auto;
     text-align: center;
 }
+
+.signInBtn {
+    background-color: red;
+    color: white;
+    margin-left: .313rem;
+}
+
+.signInEmail {
+    height: 70px;
+    min-width: 500px;
+}

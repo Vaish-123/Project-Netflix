@@ -1,57 +1,53 @@
-import axios from 'axios';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import axios from 'axios';
 import './SignIn.css';
+import { backendUrl } from '../../../Constants/Constants';
 
 function SignIn() {
 
-  const [bool, setbool] = useState(false);
-  const [first, setfirst] = useState(false);
+  const [email, setEmail] = useState(false);
+  const [password, setPassword] = useState(false);
+  const history = useHistory();
 
   function submit() {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
-    axios.post('http://localhost:3001/', { email: email, password: password }).then((res) => {
-      if (res.data === true) {
-        window.location.replace('/home');
+    axios.post(backendUrl + '/login', { email: email, password: password }).then(response => {
+      if (response.status == 200) {
+        alert(response.data.message);
+        history.push('/home');
       }
-      else
-        alert(res.data);
-    })
+      else alert('API request failed with status code:', response.status);
+    }).catch(err => {
+      if (err.response) alert(err.response.data.message);
+      else alert('An error occurred while processing your request');
+    });
   }
 
-  function disableFn(b) {
-    if (b === '' || b === null)
-      setbool(false);
-    else
-      setbool(true);
-  }
-
-  function disableFn2(b) {
-    if (b === '' || b === null)
-      setfirst(false);
-    else
-      setfirst(true);
+  const ResetPassword = () => {
+    //redirect to reset password page.
   }
 
   return (
     <div>
-      <img style={{ width: "150px" }} className='logo' src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png" alt="Netflix logo here" />
+      <img className='logo' src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png" alt="Netflix logo here" />
       <div className='signIn'>
-        <div className="container si">
+        <div className="container signInContainer">
           <div className="content">
             <h1>Sign In</h1>
             <div className="form-group">
               <label>Email address</label>
-              <input type="email" className="form-control ipBox" name='email' id='email' onChange={(e) => disableFn(e.target.value)} placeholder="Enter email" required />
+              <input type="email" className="form-control inputBox" name='email' id='email' onChange={(e) => e.target.value ? setEmail(true) : setEmail(false)} placeholder="Enter email" required />
             </div>
             <div className="form-group">
               <label>Password</label>
-              <input type="password" className="form-control ipBox" name='password' id='password' onChange={(e) => disableFn2(e.target.value)} placeholder="Password" required />
+              <input type="password" className="form-control inputBox" name='password' id='password' onChange={(e) => e.target.value ? setPassword(true) : setPassword(false)} placeholder="Password" required />
             </div>
-            <button type="submit" className="btn signInBtn" disabled={!bool || !first} onClick={submit}><b>Sign In</b></button>
-            <input type="checkbox" className='chk' id='chk' /><label htmlFor="chk" className='rememberMe'>Remember me?</label>
-            <a className='needHelp'>Need help?</a>
-            <div className="abc">
+            <button type="submit" className="btn signInBtn" disabled={!email || !password} onClick={submit}><b>Sign In</b></button>
+            <input type="checkbox" className='rememberMeChk' id='rememberMeChk' /><label htmlFor="rememberMeChk" className='rememberMe'>Remember me?</label>
+            <a className='needHelp' onClick={ResetPassword}>Need help?</a>
+            <div className="signup">
               New to netflix?
               <a href="http://localhost:3000/signup" className='signUpNow'>Sign Up Now</a>
               <p className='pageProtect'>This is page is protected by pretty much nothing.</p>
@@ -60,7 +56,7 @@ function SignIn() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default SignIn

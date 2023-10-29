@@ -8,5 +8,5 @@ const userSchema = new Schema(
     },
     { timestamps: true }
 );
-const User = mongoose.model('Netflix', userSchema)
+const User = mongoose.model('Netflix', userSchema);
 module.exports = User;

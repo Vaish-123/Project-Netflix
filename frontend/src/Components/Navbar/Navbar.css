@@ -1,6 +1,5 @@
 .navbar {
-    height: 30px;
-    padding: 20px;
+    height: 1.875rem;
     position: fixed;
     top: 0;
     width: 100%;
@@ -8,14 +7,18 @@
     justify-content: space-between;
 }
 
+.navbar:hover {
+    cursor: pointer;
+}
+
 .logo {
     position: fixed;
-    left: 20px;
-    width: 100px;
+    left: 1.25rem;
+    width: 6.25rem;
 }
 
 .avatar {
     position: fixed;
-    width: 35px;
-    right: 30px;
+    width: 2.188rem;
+    right: 1.875rem;
 }
