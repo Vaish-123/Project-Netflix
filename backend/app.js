@@ -63,4 +63,4 @@ app.post("/triggermail", (req, res) => {
   console.log(req);
   // const emailAddress = req.body.email;
   // appService.TriggerMail(emailAddress);
-})
+});

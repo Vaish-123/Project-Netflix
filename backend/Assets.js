@@ -12,8 +12,8 @@ class ResponseMessages {
 }
 
 class EmailSettings {
-  static senderAddress = "vaishnavnampoothiri@outlook.com";
-  static senderPassword = "Voltric2";
+  static senderAddress = "YOUR_EMAIL_ADDRESS";
+  static senderPassword = "YOUR_EMAIL_PASSWORD";
   static FailedMessage = "Failed to send email. Please contact support."
   static SupportEmailAddress = "support@netflixclone.com";
 }
