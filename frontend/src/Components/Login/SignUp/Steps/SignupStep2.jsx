@@ -1,16 +1,24 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom';
 import { backendUrl } from '../../../../Constants/Constants';
 
 function SignupStep2() {
     const location = useLocation();
+    const history = useHistory();
     const [email, setEmail] = useState(location.state.email);
     const [password, setPassword] = useState("");
-    function register() {
-        axios.post(backendUrl + "/signup", { name: email, password: password }).then(() => {
+
+    function Register() {
+        axios.post(backendUrl + '/signup', { email: email, password: password }).then((response) => {
+            if (response.status == 200) {
+                alert(response.data.message);
+                history.push('/');
+            }
+            else alert('API request failed with status code:', response.status);
         }).catch(err => {
-            console.log(err);
+            if (err.response) alert(err.response.data.message);
+            else alert('An error occurred while processing your request');
         });
     }
 
@@ -27,20 +35,21 @@ function SignupStep2() {
                         <div className="form-group">
                             <label htmlFor="exampleInputEmail1">Email address</label>
                             <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                            {/* <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small> */}
+                            {!email && (<small id="emailHelp" className="form-text text-danger">Email is required.</small>)}
                         </div>
-                        <div className="form-group">
+                        <div className="form-group mt-2">
                             <label htmlFor="exampleInputPassword1">Password</label>
                             <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                            {!password && (<small className="form-text text-danger">Password is required.</small>)}
                         </div>
                     </form>
                 </div>
                 <div className='d-flex justify-content-center align-items-center flex-column'>
-                    <button className='btn btn-danger' onClick={register}>REGISTER</button>
+                    <button className='btn btn-danger' disabled={!email || !password} onClick={Register}>REGISTER</button>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default SignupStep2

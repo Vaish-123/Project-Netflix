@@ -9,7 +9,7 @@
     align-items: center;
 }
 
-.su {
+.signupContainer {
     color: #fff;
     margin: 0 auto;
     max-width: 950px;
@@ -23,7 +23,7 @@
 
 }
 
-.su .signUpHeader {
+.signupContainer .signUpHeader {
     font-size: 3.125rem;
     max-width: 640px;
     margin: auto;

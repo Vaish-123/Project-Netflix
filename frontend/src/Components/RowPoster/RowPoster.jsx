@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../Axios';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom';
-import { imageUrl, API_KEY, backendUrl } from '../../Constants/Constants';
+import { imageUrl, API_KEY } from '../../Constants/Constants';
 import './RowPoster.css';
 import YouTube from 'react-youtube';
 
@@ -9,22 +8,6 @@ function RowPoster(props) {
 
     const [movies, setMovies] = useState([]);
     const [urlId, setUrlId] = useState();
-    const history = useHistory();
-
-    setInterval(logout, 50000);
-
-    function logout() {
-        axios.get(backendUrl + '/logout').then(response => {
-            if (response.status == 200) {
-                alert(response.data.message);
-                history.push('/');
-            }
-            else alert('API request failed with status code:', response.status);
-        }).catch(err => {
-            if (err.response) alert(err.response.data.message);
-            else alert('An error occurred while processing your request');
-        });
-    }
 
     useEffect(() => {
         axios.get(props.url).then(response => {
