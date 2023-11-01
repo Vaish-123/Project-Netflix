@@ -6,10 +6,11 @@ const PORT = process.env.PORT || 3001;
 const sessions = require("express-session");
 const dbURL = "mongodb://localhost:27017/netflix";
 const appService = require("./appService.js");
+const { valueNull } = require("./Assets.js");
 
 mongoose
   .connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then((res) =>
+  .then(() =>
     app.listen(PORT, () => {
       console.log("Started at ==>", PORT);
     })
@@ -35,17 +36,31 @@ app.use(
 
 //User authentication
 app.post("/", (req, res) => {
-  appService.UserAuth(req, res);
+  // appService.UserAuth(req, res);
 });
 
 app.get("/logout", (req, res) => {
   appService.logout(req, res);
 });
 
+const NullCheck = (request) => {
+  if (request.email && request.password) return true;
+  else return false;
+};
+
 app.post("/signup", (req, res) => {
-  appService.signup(req, res);
+  if (NullCheck(req.body)) appService.signup(req, res);
+  else res.status(400).send({ message: valueNull });
 });
 
 app.post("/login", (req, res) => {
-  appService.login(req, res);
+  if (NullCheck(req.body)) {
+    appService.login(req, res);
+  } else res.status(400).send({ message: valueNull });
+});
+
+app.post("/triggermail", (req, res) => {
+  console.log(req);
+  // const emailAddress = req.body.email;
+  // appService.TriggerMail(emailAddress);
 });

@@ -49,7 +49,7 @@ function SignIn() {
             <a className='needHelp' onClick={ResetPassword}>Need help?</a>
             <div className="signup">
               New to netflix?
-              <a href="http://localhost:3000/signup" className='signUpNow'>Sign Up Now</a>
+              <a href="" className='signUpNow' onClick={() => history.push('/signup')}>Sign Up Now</a>
               <p className='pageProtect'>This is page is protected by pretty much nothing.</p>
             </div>
           </div>
