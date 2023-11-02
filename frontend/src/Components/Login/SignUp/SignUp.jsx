@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import './SignUp.css';
+import { Assets } from '../../../Constants/Constants';
 
 function SignUp() {
     const [email, setEmail] = useState();
@@ -11,7 +12,7 @@ function SignUp() {
 
     return (
         <div>
-            <img className='logo' src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png" alt="Netflix logo here" />
+            <img className='logo' src={Assets.NetFlixLogo} alt="Netflix logo here" />
             <div className="signUp">
                 <div className="container signupContainer">
                     <h1 className='signUpHeader'>Unlimited movies, TV shows and more.</h1>

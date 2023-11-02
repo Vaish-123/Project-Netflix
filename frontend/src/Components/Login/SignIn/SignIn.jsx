@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import axios from 'axios';
 import './SignIn.css';
-import { backendUrl } from '../../../Constants/Constants';
+import { Assets, backendUrl } from '../../../Constants/Constants';
 
 function SignIn() {
 
@@ -31,7 +31,7 @@ function SignIn() {
 
   return (
     <div>
-      <img className='logo' src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png" alt="Netflix logo here" />
+      <img className='logo' src={Assets.NetFlixLogo} alt="Netflix logo here" />
       <div className='signIn'>
         <div className="container signInContainer">
           <div className="content">
