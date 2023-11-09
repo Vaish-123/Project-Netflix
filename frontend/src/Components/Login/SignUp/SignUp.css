@@ -30,13 +30,29 @@
     text-align: center;
 }
 
-.signInBtn {
+.signUpBtn {
     background-color: red;
     color: white;
     margin-left: .313rem;
+    padding: 15px;
+    border-radius: 10px;
 }
 
-.signInEmail {
-    height: 70px;
+.signUpEmail {
     min-width: 500px;
+    border-radius: 10px;
+    background-color: #52768769;
+    border: 1px solid #72cb95;
+    color: antiquewhite;
+    padding: 16px;
+}
+
+.signUpEmail::placeholder {
+    padding: 10px !important;
+    color: #81807e;
+}
+
+.signupContainer .rightArrowIcon {
+    margin-left: 12px;
+    margin-right: 16px;
 }

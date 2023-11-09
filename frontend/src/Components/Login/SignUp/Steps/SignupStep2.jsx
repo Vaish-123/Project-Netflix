@@ -13,7 +13,7 @@ function SignupStep2() {
         axios.post(backendUrl + '/signup', { email: email, password: password }).then((response) => {
             if (response.status == 200) {
                 alert(response.data.message);
-                history.push('/');
+                history.push({ pathname: '/', state: { email: email } });
             }
             else alert('API request failed with status code:', response.status);
         }).catch(err => {
@@ -23,8 +23,8 @@ function SignupStep2() {
     }
 
     return (
-        <div className="container abc">
-            <div className="row pqr">
+        <div className="container step2Container">
+            <div className="row step2Row">
                 <div className='d-flex justify-content-center align-items-center flex-column'>
                     <p><small>STEP <b>1</b> OF <b>3</b></small></p>
                     <p><b className='step1Header'>Create a password to start your membership</b></p>

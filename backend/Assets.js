@@ -1,3 +1,9 @@
+class SystemSettings {
+  static dbUrlLocal = "mongodb://localhost:27017/netflix";
+  static portLocal = 3001;
+  // static dbUrlMongoAtlas=;
+}
+
 class ResponseMessages {
   static loginSuccess = "Login successful";
   static badRequest = "Bad Request";
@@ -8,7 +14,7 @@ class ResponseMessages {
   static logoutSuccess = "Logged out succesfully";
   static userAlreadyExists = "User with same email already exists";
   static valueNull = "Email/password cannot be null";
-  static MultipleErrorsOccured = "Multiple errors occured";
+  static multipleErrorsOccured = "Multiple errors occured";
 }
 
 class EmailSettings {
@@ -87,4 +93,4 @@ class EmailContent {
 
 const EmailInstance = { ...EmailSettings, ...EmailContent }
 
-module.exports = { ResponseMessages, EmailInstance };
+module.exports = { SystemSettings, ResponseMessages, EmailInstance };

@@ -3,8 +3,8 @@ const User = require("./Schema/userSchema");
 const { ResponseMessages, EmailInstance } = require("./Assets.js");
 const nodemailer = require("nodemailer");
 
-const EMAIL = "admin@gmail.com";
-const PASSWORD = "123qwe";
+// const EMAIL = "admin@gmail.com";
+// const PASSWORD = "123qwe";
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.office365.com',
@@ -63,15 +63,15 @@ const SendMail = (recipientAddress, type) => {
 }
 
 //what is this?
-function UserAuth(req, res) {
-  var email = req.body.email;
-  var password = req.body.password;
-  if (email == EMAIL && password == PASSWORD) {
-    session = req.session;
-    session.userid = req.body.username;
-    res.send(true);
-  } else res.send("Invalid username or password");
-}
+// function UserAuth(req, res) {
+//   var email = req.body.email;
+//   var password = req.body.password;
+//   if (email == EMAIL && password == PASSWORD) {
+//     session = req.session;
+//     session.userid = req.body.username;
+//     res.send(true);
+//   } else res.send("Invalid username or password");
+// }
 
 function logout(req, res) {
   req.session.destroy();
@@ -79,8 +79,8 @@ function logout(req, res) {
 }
 
 function signup(req, res) {
-  const name = req.body.email;
-  const password = req.body.password;
+  const name = req.body.email.trim();
+  const password = req.body.password.trim();
   var emailStatus = true;
   User.find({ name: name }).then((result) => {
     if (result && result.length != 0)
@@ -93,17 +93,19 @@ function signup(req, res) {
         });
       });
       if (emailStatus) res.send({ message: ResponseMessages.registrationSuccess });
-      else res.send({ message: ResponseMessages.MultipleErrorsOccured });
+      else res.send({ message: ResponseMessages.multipleErrorsOccured });
     }
   });
 }
 
 function login(req, res) {
-  User.find({ name: req.body.email }).then((result) => {
+  const name = req.body.email.trim();
+  const password = req.body.password.trim();
+  User.find({ name: name }).then((result) => {
     if (result && result.length == 1) {
-      User.findOne({ name: req.body.email }).then((userResult) => {
+      User.findOne({ name: name }).then((userResult) => {
         bcrypt.compare(
-          req.body.password,
+          password,
           userResult.password,
           function (err, match) {
             if (match) {
@@ -142,4 +144,4 @@ const TriggerMail = (emailAddress) => {
 
 //TriggerMail(); //trigger mail for testing
 
-module.exports = { UserAuth, logout, signup, login, TriggerMail };
+module.exports = { logout, signup, login, TriggerMail };

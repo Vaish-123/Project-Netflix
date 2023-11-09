@@ -1,8 +1,8 @@
-.abc {
+.step1Container, .step2Container {
     height: 700px;
 }
 
-.pqr {
+.step1Row, .step2Row {
     background-color: #fff;
     height: 700px;
     width: 119%;
@@ -12,17 +12,17 @@
 
 }
 
-.step1Header{
+.step1Header {
     font-size: 32px;
     font-weight: 500;
 }
 
-.pqr p {
+.step1Container p, .step2Container p {
     max-width: 340px;
     text-align: center;
 }
 
-.pqr button {
+.step1Container button, .step2Container button {
     background-color: #f6121d;
     font-size: 24px;
     font-weight: 400;

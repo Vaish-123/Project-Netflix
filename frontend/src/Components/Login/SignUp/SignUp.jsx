@@ -20,10 +20,10 @@ function SignUp() {
                     <div>
                         <h5 className='m-4'>Ready to watch? Enter your email to create or restart your membership.</h5>
                         <div className="d-flex justify-content-center">
-                            <input className='signInEmail' type="email" placeholder='Email address' onChange={(e) => setEmail(e.target.value)} />
-                            {/* {!email && (<small id="emailHelp" className="form-text text-danger">Th.</small>)} */}
-                            <button className='signInBtn' disabled={!email} onClick={handleNavigation} >Get Started
-                                <i className="fa-sharp fa-solid fa-chevron-right"></i>
+                            <input className='signUpEmail' type="email" placeholder='Email address' onChange={(e) => setEmail(e.target.value)} />
+                            {/* {!email && (<small id="emailHelp" className="form-text text-danger"></small>)} */}
+                            <button className='signUpBtn' disabled={!email} onClick={handleNavigation} >Get Started
+                                <i className="fa-sharp fa-solid fa-chevron-right rightArrowIcon"></i>
                             </button>
                         </div>
                     </div>
