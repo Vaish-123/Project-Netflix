@@ -9,7 +9,7 @@ import RowPoster from "./Components/RowPoster/RowPoster";
 import SignupStep1 from "./Components/Login/SignUp/Steps/SignupStep1";
 import SignupStep2 from "./Components/Login/SignUp/Steps/SignupStep2";
 import "./App.css";
-import "./urls";
+// import "./urls";
 import { originals, trending, horror } from "./urls";
 
 function App() {

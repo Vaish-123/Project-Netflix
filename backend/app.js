@@ -1,12 +1,12 @@
+const { ResponseMessages, SystemSettings } = require("./Assets.js");
 const express = require("express");
 const CORS = require("cors");
 const mongoose = require("mongoose");
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || SystemSettings.portLocal;
 const sessions = require("express-session");
-const dbURL = "mongodb://localhost:27017/netflix";
 const appService = require("./appService.js");
-const { valueNull } = require("./Assets.js");
+const dbURL = SystemSettings.dbUrlLocal;
 
 mongoose
   .connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -44,23 +44,22 @@ app.get("/logout", (req, res) => {
 });
 
 const NullCheck = (request) => {
-  if (request.email && request.password) return true;
+  if (request.email.trim() && request.password.trim()) return true;
   else return false;
 };
 
 app.post("/signup", (req, res) => {
   if (NullCheck(req.body)) appService.signup(req, res);
-  else res.status(400).send({ message: valueNull });
+  else res.status(400).send({ message: ResponseMessages.valueNull });
 });
 
 app.post("/login", (req, res) => {
   if (NullCheck(req.body)) {
     appService.login(req, res);
-  } else res.status(400).send({ message: valueNull });
+  } else res.status(400).send({ message: ResponseMessages.valueNull });
 });
 
 app.post("/triggermail", (req, res) => {
-  console.log(req);
   // const emailAddress = req.body.email;
   // appService.TriggerMail(emailAddress);
 });

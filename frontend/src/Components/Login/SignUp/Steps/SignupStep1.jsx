@@ -14,8 +14,8 @@ function SignupStep1() {
   }
 
   return (
-    <div className="container abc">
-      <div className="row pqr">
+    <div className="container step1Container">
+      <div className="row step1Row">
         <div className='d-flex justify-content-center align-items-center flex-column'>
           <p><small>STEP <b>1</b> OF <b>3</b></small></p>
           <p><b className='step1Header'>Finish setting up your account</b></p>

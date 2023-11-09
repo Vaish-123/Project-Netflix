@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom';
 import axios from 'axios';
 import './SignIn.css';
-import { backendUrl } from '../../../Constants/Constants';
+import { Assets, backendUrl } from '../../../Constants/Constants';
 
 function SignIn() {
 
-  const [email, setEmail] = useState(false);
-  const [password, setPassword] = useState(false);
+  const location = useLocation();
+  const [email, setEmail] = useState((location && location.state && location.state.email) || "");
+  const [password, setPassword] = useState();
   const history = useHistory();
 
   function submit() {
@@ -31,18 +32,18 @@ function SignIn() {
 
   return (
     <div>
-      <img className='logo' src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png" alt="Netflix logo here" />
+      <img className='logo' src={Assets.NetFlixLogo} alt="Netflix logo here" />
       <div className='signIn'>
         <div className="container signInContainer">
           <div className="content">
             <h1>Sign In</h1>
             <div className="form-group">
               <label>Email address</label>
-              <input type="email" className="form-control inputBox" name='email' id='email' onChange={(e) => e.target.value ? setEmail(true) : setEmail(false)} placeholder="Enter email" required />
+              <input type="email" className="form-control inputBox" id='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" required />
             </div>
             <div className="form-group">
               <label>Password</label>
-              <input type="password" className="form-control inputBox" name='password' id='password' onChange={(e) => e.target.value ? setPassword(true) : setPassword(false)} placeholder="Password" required />
+              <input type="password" className="form-control inputBox" id='password' onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
             </div>
             <button type="submit" className="btn signInBtn" disabled={!email || !password} onClick={submit}><b>Sign In</b></button>
             <input type="checkbox" className='rememberMeChk' id='rememberMeChk' /><label htmlFor="rememberMeChk" className='rememberMe'>Remember me?</label>
